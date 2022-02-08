@@ -1,0 +1,26 @@
+{
+  "files": {
+    "Bilutleieselskapet.java": [
+      {
+        "id": "2d6a4f79-d5fe-4e2d-a531-bbe681f6946c",
+        "line": 14,
+        "version": 985,
+        "index": 206
+      },
+      {
+        "id": "f61b413b-2900-4149-9748-20e12026f16d",
+        "line": 156,
+        "version": 985,
+        "index": 2910
+      }
+    ],
+    "Main.java": [
+      {
+        "id": "551ecd17-6172-46d3-bc01-a4a3dc665ecf",
+        "line": 67,
+        "version": 1613,
+        "index": 1702
+      }
+    ]
+  }
+}

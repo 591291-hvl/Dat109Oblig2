@@ -1,0 +1,59 @@
+
+class UtleiekontorTest {
+	
+	
+	
+
+	@Test
+	void testLeggTilBil() {
+		
+	Utleiekontor kontor1 = new Utleiekontor(new Adresse("Olsvikåsen", "5178", "OLSVIK"), "12345678");
+	Bil bil1 = new Bil("42069", "BMW", "X7", "Hvit", Utleiegruppe.C, true);
+	Bil bil2 = new Bil("12345", "Lamborghini", "Gallardo", "Gul", Utleiegruppe.A, true);
+	kontor1.leggTilBil(bil1);
+	kontor1.leggTilBil(bil2); 
+	 
+	//Sjekker om den ligger in i bil tabellen i Utleiekontor. 
+	assertTrue(kontor1.getBiler()[0].getRegistreringsNr().equals(bil1.getRegistreringsNr())); 
+	assertTrue(kontor1.getAntall() == 2);	
+	
+	}
+	
+	
+	@Test
+	void testLeiUt() {
+		
+		Utleiekontor kontor1 = new Utleiekontor(new Adresse("Olsvikåsen", "5178", "OLSVIK"), "12345678");
+		Bil bil1 = new Bil("42069", "BMW", "X7", "Hvit", Utleiegruppe.C, true);
+		Bil bil2 = new Bil("12345", "Lamborghini", "Gallardo", "Gul", Utleiegruppe.A, true);
+		kontor1.leggTilBil(bil1);
+		kontor1.leggTilBil(bil2); 
+		Kunde kunde1 = new Kunde("Kasper","Jespersen", new Adresse("Kardemommeby 3", "5187", "Kardemomme"),"345 719 19");
+		kontor1.leiUt("42069", kunde1, 4);
+		
+		
+		assertFalse(bil1.getLedig()); 
+		assertTrue(kunde1.getReservasjon() != null);
+		assertTrue(kunde1.getReservasjon().getBil().equals(bil1)); 
+	}
+	
+	@Test
+	void testReturner() {
+	Utleiekontor kontor1 = new Utleiekontor(new Adresse("Olsvikåsen", "5178", "OLSVIK"), "12345678");
+	Bil bil1 = new Bil("42069", "BMW", "X7", "Hvit", Utleiegruppe.C, true);
+	Bil bil2 = new Bil("12345", "Lamborghini", "Gallardo", "Gul", Utleiegruppe.A, true);
+	kontor1.leggTilBil(bil1);
+	kontor1.leggTilBil(bil2); 
+	Kunde kunde1 = new Kunde("Kasper","Jespersen", new Adresse("Kardemommeby 3", "5187", "Kardemomme"),"345 719 19");
+	kontor1.leiUt("42069", kunde1, 4);
+	 
+	kontor1.returner(kunde1); 
+	
+	assertTrue(bil1.getLedig());
+	assertTrue(kunde1.getReservasjon() == null);
+
+	 
+	
+	}
+
+}
